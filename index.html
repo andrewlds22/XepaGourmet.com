@@ -1,57 +1,378 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sabor & Receitas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xepa Gourmet</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+    <link rel="stylesheet" href="style.css">
 
-    body {
-      background: #fff8f0;
-      color: #333;
-    }
-
-    header {
-      background: #ff6b35;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-    }
-
-    header p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-  </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <header>
-    <h1>🍽️ Sabor & Receitas</h1>
+<header>
 
-    <p>
-      Descubra receitas deliciosas para todos os momentos!
-      Encontre pratos fáceis, sobremesas irresistíveis,
-      opções saudáveis e dicas de culinária para preparar
-      refeições incríveis no dia a dia. Cozinhe com praticidade,
-      criatividade e muito sabor.
-    </p>
-  </header>
+<div class="logo">
+🍽️ Xepa Gourmet
+</div>
+
+<nav>
+
+<a href="index.html">Início</a>
+<a href="receitas.html">Receitas</a>
+<a href="sobre.html">Sobre</a>
+<a href="contato.html">Contato</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Receitas simples e deliciosas</h1>
+
+<p>Aprenda receitas fáceis para qualquer ocasião.</p>
+
+<a href="receitas.html" class="botao">Ver receitas</a>
+
+</section>
+
+<section class="pesquisa">
+
+<input
+type="text"
+id="pesquisa"
+placeholder="Pesquisar receita..."
+>
+
+</section>
+
+<section class="receitas">
+
+<div class="card">
+
+<h2>Lasanha</h2>
+
+<p>Muito queijo e molho.</p>
+
+<button>Ver receita</button>
+
+</div>
+
+<div class="card">
+
+<h2>Bolo de Chocolate</h2>
+
+<p>Fofo e fácil.</p>
+
+<button>Ver receita</button>
+
+</div>
+
+<div class="card">
+
+<h2>Strogonoff</h2>
+
+<p>Clássico brasileiro.</p>
+
+<button>Ver receita</button>
+
+</div>
+
+<div class="card">
+
+<h2>Pudim</h2>
+
+<p>Sobremesa cremosa.</p>
+
+<button>Ver receita</button>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Xepa Gourmet</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+// =========================
+// Xepa Gourmet - script.js
+// =========================
+
+// Pesquisa de receitas
+const pesquisa = document.getElementById("pesquisa");
+
+if (pesquisa) {
+    pesquisa.addEventListener("keyup", function () {
+        const texto = pesquisa.value.toLowerCase();
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            const titulo = card.querySelector("h2").textContent.toLowerCase();
+            const descricao = card.querySelector("p").textContent.toLowerCase();
+
+            if (
+                titulo.includes(texto) ||
+                descricao.includes(texto)
+            ) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+}
+
+// Animação dos cards
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+
+    card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-8px)";
+        card.style.transition = "0.3s";
+        card.style.boxShadow = "0 12px 25px rgba(0,0,0,.2)";
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateY(0)";
+        card.style.boxShadow = "0 5px 15px rgba(0,0,0,.1)";
+    });
+
+});
+
+// Rolagem suave para links internos
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const destino = document.querySelector(this.getAttribute("href"));
+
+        if(destino){
+
+            destino.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
+
+    });
+
+});
+
+// Botão voltar ao topo
+const botaoTopo = document.createElement("button");
+
+botaoTopo.innerHTML = "↑";
+
+botaoTopo.id = "topo";
+
+document.body.appendChild(botaoTopo);
+
+botaoTopo.style.position = "fixed";
+botaoTopo.style.bottom = "25px";
+botaoTopo.style.right = "25px";
+botaoTopo.style.padding = "12px 18px";
+botaoTopo.style.border = "none";
+botaoTopo.style.borderRadius = "50%";
+botaoTopo.style.cursor = "pointer";
+botaoTopo.style.fontSize = "20px";
+botaoTopo.style.display = "none";
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 250){
+
+        botaoTopo.style.display = "block";
+
+    }else{
+
+        botaoTopo.style.display = "none";
+
+    }
+
+});
+
+botaoTopo.addEventListener("click", ()=>{
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+
+// Mensagem ao carregar o site
+window.addEventListener("load", () => {
+    console.log("Xepa Gourmet carregado com sucesso!");
+});
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas | Xepa Gourmet</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        🍽️ Xepa Gourmet
+    </div>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="receitas.html">Receitas</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+    <h1>Nossas Receitas</h1>
+    <p>Escolha uma receita e prepare algo delicioso.</p>
+</section>
+
+<section class="pesquisa">
+
+    <input
+        type="text"
+        id="pesquisa"
+        placeholder="Pesquisar receita..."
+    >
+
+</section>
+
+<section class="receitas">
+
+    <div class="card">
+        <h2>Lasanha à Bolonhesa</h2>
+
+        <p>Uma lasanha cremosa, cheia de queijo e molho caseiro.</p>
+
+        <h3>Ingredientes</h3>
+
+        <ul>
+            <li>500 g de carne moída</li>
+            <li>1 pacote de massa para lasanha</li>
+            <li>300 g de queijo muçarela</li>
+            <li>Molho de tomate</li>
+            <li>Presunto</li>
+            <li>Queijo ralado</li>
+        </ul>
+
+        <h3>Modo de preparo</h3>
+
+        <p>
+            Refogue a carne, monte as camadas com molho, massa,
+            queijo e presunto. Finalize com queijo ralado e leve
+            ao forno por aproximadamente 40 minutos.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Bolo de Chocolate</h2>
+
+        <p>Bolo fofinho com cobertura de chocolate.</p>
+
+        <h3>Ingredientes</h3>
+
+        <ul>
+            <li>3 ovos</li>
+            <li>2 xícaras de farinha</li>
+            <li>1 xícara de açúcar</li>
+            <li>1 xícara de leite</li>
+            <li>Chocolate em pó</li>
+            <li>Fermento</li>
+        </ul>
+
+        <h3>Modo de preparo</h3>
+
+        <p>
+            Misture todos os ingredientes, coloque em uma forma
+            untada e asse por cerca de 40 minutos.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <h2>Strogonoff de Frango</h2>
+
+        <p>Receita rápida e muito saborosa.</p>
+
+        <h3>Ingredientes</h3>
+
+        <ul>
+            <li>500 g de frango</li>
+            <li>Creme de leite</li>
+            <li>Molho de tomate</li>
+            <li>Cebola</li>
+            <li>Alho</li>
+            <li>Sal</li>
+        </ul>
+
+        <h3>Modo de preparo</h3>
+
+        <p>
+            Refogue o frango, acrescente o molho de tomate,
+            depois o creme de leite e misture até ficar cremoso.
+            Sirva com arroz e batata palha.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Pudim de Leite</h2>
+
+        <p>Sobremesa clássica e muito cremosa.</p>
+
+        <h3>Ingredientes</h3>
+
+        <ul>
+            <li>1 lata de leite condensado</li>
+            <li>2 medidas de leite</li>
+            <li>3 ovos</li>
+            <li>Açúcar para a calda</li>
+        </ul>
+
+        <h3>Modo de preparo</h3>
+
+        <p>
+            Faça a calda, misture os ingredientes no liquidificador
+            e asse em banho-maria por aproximadamente 1 hora.
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>© 2026 Xepa Gourmet - Todos os direitos reservados.</p>
+
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
