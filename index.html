@@ -1,733 +1,2545 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Xepa Gourmet - Receitas simples, saborosas e fáceis de preparar para qualquer ocasião.">
+<title>Xepa Gourmet | Receitas</title>
 
-    <title>Xepa Gourmet | Receitas deliciosas</title>
+<style>
 
-    <!-- Fonte -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+html{
+    scroll-behavior:smooth;
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#faf9f7;
+    color:#222;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#111;
+    color:white;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#f47b20;
+    font-style:italic;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#f47b20;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    padding:70px 8%;
+    color:white;
+
+    background:
+    radial-gradient(circle at 80% 20%,rgba(244,123,32,.35),transparent 30%),
+    linear-gradient(120deg,#111,#272727 60%,#171717);
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.hero small{
+    color:#f47b20;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,6vw,75px);
+    line-height:1.05;
+    margin:18px 0;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:17px;
+    line-height:1.7;
+    max-width:560px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:28px;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+}
+
+.btn-orange{
+    background:#f47b20;
+    color:white;
+}
+
+.btn-orange:hover{
+    background:#d9630f;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+    max-width:850px;
+    margin:-30px auto 60px;
+    padding:0 20px;
+    position:relative;
+}
+
+.search{
+    background:white;
+    height:60px;
+    border-radius:35px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 12px 35px #0002;
+    overflow:hidden;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 25px;
+    font-size:15px;
+}
+
+.search button{
+    width:65px;
+    height:100%;
+    border:0;
+    background:#f47b20;
+    color:white;
+    font-size:23px;
+    cursor:pointer;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title small{
+    color:#f47b20;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.section-title h2{
+    font-family:Georgia,serif;
+    font-size:35px;
+    margin-top:7px;
+}
+
+/* ================= CATEGORIAS ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:12px;
+    margin-bottom:80px;
+}
+
+.category{
+    text-decoration:none;
+    color:#222;
+    text-align:center;
+    padding:18px 5px;
+    border-radius:15px;
+    background:white;
+    border:1px solid #eee;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px #0001;
+    color:#f47b20;
+}
+
+.category-icon{
+    width:60px;
+    height:60px;
+    margin:auto auto 10px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#fff4ea;
+    font-size:27px;
+}
+
+.category span{
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ================= RECEITAS ================= */
+
+.recipes{
+    padding-bottom:80px;
+}
+
+.recipe-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:17px;
+    overflow:hidden;
+    border:1px solid #eee;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px #0001;
+}
+
+.card-image{
+    height:200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:80px;
+    background:
+    linear-gradient(135deg,#fff1e4,#ffe0c4);
+    position:relative;
+}
+
+.favorite{
+    position:absolute;
+    right:12px;
+    top:12px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:0;
+    background:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.favorite.active{
+    color:#f47b20;
+}
+
+.time{
+    position:absolute;
+    left:12px;
+    bottom:12px;
+    background:#111;
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card-content h3{
+    font-family:Georgia,serif;
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#777;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.rating{
+    color:#f47b20;
+    font-weight:bold;
+    margin-top:12px;
+    font-size:13px;
+}
+
+.card-link{
+    display:inline-block;
+    margin-top:12px;
+    color:#f47b20;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ================= DESTAQUE ================= */
+
+.highlight{
+    max-width:1160px;
+    margin:0 auto 80px;
+    padding:45px;
+    border-radius:20px;
+    color:white;
+
+    background:
+    radial-gradient(circle at 90% 20%,#f47b2055,transparent 30%),
+    linear-gradient(120deg,#111,#292929);
+}
+
+.highlight h2{
+    font-family:Georgia,serif;
+    font-size:38px;
+    max-width:500px;
+}
+
+.highlight p{
+    color:#ccc;
+    max-width:550px;
+    margin-top:12px;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    background:#f47b20;
+    color:white;
+    max-width:none;
+    padding:55px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.newsletter h2{
+    font-family:Georgia,serif;
+    font-size:34px;
+}
+
+.newsletter p{
+    margin-top:8px;
+}
+
+.newsletter form{
+    display:flex;
+}
+
+.newsletter input{
+    width:270px;
+    height:48px;
+    border:0;
+    padding:0 15px;
+    outline:0;
+    border-radius:25px 0 0 25px;
+}
+
+.newsletter button{
+    height:48px;
+    border:0;
+    padding:0 20px;
+    background:#111;
+    color:white;
+    font-weight:bold;
+    border-radius:0 25px 25px 0;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111;
+    color:white;
+    padding:50px 8% 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.footer-logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.footer-logo span{
+    color:#f47b20;
+}
+
+footer h3{
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+footer a{
+    color:#999;
+    text-decoration:none;
+    display:block;
+    margin:8px 0;
+    font-size:13px;
+}
+
+footer a:hover{
+    color:#f47b20;
+}
+
+footer p{
+    color:#999;
+    font-size:13px;
+    margin-top:12px;
+    max-width:300px;
+}
+
+.copyright{
+    border-top:1px solid #333;
+    text-align:center;
+    color:#666;
+    margin-top:40px;
+    padding-top:20px;
+    font-size:11px;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:1000px){
+
+    .categories{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .recipe-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:60px 25px;
+    }
+
+    .hero h1{
+        font-size:46px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .recipe-grid{
+        grid-template-columns:1fr;
+    }
+
+    .newsletter{
+        display:block;
+        padding:45px 25px;
+    }
+
+    .newsletter form{
+        margin-top:25px;
+    }
+
+    .newsletter input{
+        width:100%;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- =====================================
-         HEADER
-    ====================================== -->
+<!-- ================= HEADER ================= -->
 
-    <header>
+<header>
 
-        <div class="logo">
-            👨‍🍳 Xepa <span style="color:#f47b20;">Gourmet</span>
-        </div>
+    <div class="logo">
+        👨‍🍳 Xepa <span>Gourmet</span>
+    </div>
 
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="receitas.html">Receitas</a>
-            <a href="#categorias">Categorias</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="contato.html">Contato</a>
-        </nav>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#receitas">Receitas</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
 
-    </header>
+</header>
 
 
-    <!-- =====================================
-         HERO
-    ====================================== -->
+<!-- ================= HERO ================= -->
 
-    <section class="hero">
+<section class="hero" id="inicio">
 
-        <span style="
-            color:#f47b20;
-            font-weight:700;
-            font-size:13px;
-            margin-bottom:10px;
-        ">
-            BEM-VINDO AO XEPA GOURMET
-        </span>
+    <div class="hero-content">
+
+        <small>BEM-VINDO AO XEPA GOURMET</small>
 
         <h1>
             Receitas simples
             para momentos
-            especiais
+            especiais.
         </h1>
 
         <p>
             Descubra receitas práticas, econômicas e deliciosas
-            para o dia a dia. Qualquer pessoa pode cozinhar bem!
+            para deixar qualquer refeição muito mais especial.
         </p>
 
-        <a href="receitas.html" class="botao">
-            VER RECEITAS →
+        <a href="#receitas" class="btn btn-orange">
+            Ver receitas →
         </a>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =====================================
-         PESQUISA
-    ====================================== -->
+<!-- ================= PESQUISA ================= -->
 
-    <section class="pesquisa">
+<div class="search-area">
+
+    <div class="search">
 
         <input
             type="text"
-            id="pesquisa"
+            id="searchInput"
             placeholder="🔎  O que você quer cozinhar hoje?"
-            aria-label="Pesquisar receitas"
         >
 
-    </section>
+        <button onclick="pesquisar()">⌕</button>
+
+    </div>
+
+</div>
 
 
-    <!-- =====================================
-         CATEGORIAS
-    ====================================== -->
+<!-- ================= CATEGORIAS ================= -->
 
-    <section class="categorias" id="categorias">
+<section id="categorias">
 
-        <div class="receitas-topo">
+    <div class="section-title">
 
-            <div>
-                <span style="
-                    color:#f47b20;
-                    font-size:12px;
-                    font-weight:700;
-                ">
-                    EXPLORE
+        <small>EXPLORE</small>
+
+        <h2>Categorias</h2>
+
+    </div>
+
+    <div class="categories">
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍽️</div>
+            <span>Todas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍛</div>
+            <span>Almoço</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🌙</div>
+            <span>Jantar</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍰</div>
+            <span>Sobremesas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍔</div>
+            <span>Lanches</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">☕</div>
+            <span>Café</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🥤</div>
+            <span>Bebidas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🌱</div>
+            <span>Saudáveis</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RECEITAS ================= -->
+
+<section class="recipes" id="receitas">
+
+    <div class="section-title">
+
+        <small>EM DESTAQUE</small>
+
+        <h2>Receitas mais acessadas</h2>
+
+    </div>
+
+
+    <div class="recipe-grid" id="recipeGrid">
+
+
+        <!-- LASANHA -->
+
+        <article class="card" data-name="lasanha">
+
+            <div class="card-image">
+
+                🍝
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 60 min
                 </span>
 
-                <h2>Categorias</h2>
             </div>
 
-        </div>
+            <div class="card-content">
 
+                <h3>Lasanha à Bolonhesa</h3>
 
-        <div class="categorias-container">
+                <p>
+                    Clássica, cremosa e perfeita
+                    para toda a família.
+                </p>
 
-            <div class="categoria">
-                <div class="categoria-icon">🍽️</div>
-                <span>Todas</span>
+                <div class="rating">
+                    ★ 4.9
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Lasanha à Bolonhesa')"
+                >
+                    Ver receita →
+                </a>
+
             </div>
 
-            <div class="categoria">
-                <div class="categoria-icon">🍛</div>
-                <span>Almoço</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">🌙</div>
-                <span>Jantar</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">🍰</div>
-                <span>Sobremesas</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">🍔</div>
-                <span>Lanches</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">☕</div>
-                <span>Café da manhã</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">🥤</div>
-                <span>Bebidas</span>
-            </div>
-
-            <div class="categoria">
-                <div class="categoria-icon">🌱</div>
-                <span>Vegetarianas</span>
-            </div>
-
-        </div>
-
-    </section>
+        </article>
 
 
-    <!-- =====================================
-         RECEITAS EM DESTAQUE
-    ====================================== -->
+        <!-- BOLO -->
 
-    <section class="receitas">
+        <article class="card" data-name="bolo chocolate">
 
-        <div class="receitas-topo">
+            <div class="card-image">
 
-            <div>
+                🍫
 
-                <span style="
-                    color:#f47b20;
-                    font-size:12px;
-                    font-weight:700;
-                ">
-                    EM DESTAQUE
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 50 min
                 </span>
 
-                <h2>Receitas mais acessadas</h2>
+            </div>
+
+            <div class="card-content">
+
+                <h3>Bolo de Chocolate</h3>
+
+                <p>
+                    Fofinho, molhadinho e com
+                    cobertura irresistível.
+                </p>
+
+                <div class="rating">
+                    ★ 4.8
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Bolo de Chocolate')"
+                >
+                    Ver receita →
+                </a>
 
             </div>
 
-            <a href="receitas.html">
-                VER TODAS →
-            </a>
-
-        </div>
+        </article>
 
 
-        <div class="receitas-grid">
+        <!-- STROGONOFF -->
 
+        <article class="card" data-name="strogonoff frango">
 
-            <!-- LASANHA -->
+            <div class="card-image">
 
-            <article class="card">
+                🍗
 
-                <div class="card-imagem">
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
 
-                    <img
-                        src="images/lasanha.jpg"
-                        alt="Lasanha à bolonhesa"
-                        loading="lazy"
-                    >
+                <span class="time">
+                    ⏱ 30 min
+                </span>
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Lasanha"
-                    >
-                        ♡
-                    </button>
+            </div>
 
+            <div class="card-content">
+
+                <h3>Strogonoff de Frango</h3>
+
+                <p>
+                    Cremoso, rápido e perfeito
+                    para qualquer ocasião.
+                </p>
+
+                <div class="rating">
+                    ★ 4.7
                 </div>
 
-                <div class="card-conteudo">
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Strogonoff de Frango')"
+                >
+                    Ver receita →
+                </a>
 
-                    <h2>Lasanha à Bolonhesa</h2>
+            </div>
 
-                    <p>
-                        Clássica, cremosa e perfeita
-                        para toda a família.
-                    </p>
+        </article>
 
-                    <div class="card-info">
 
-                        <span>⏱ 60 min</span>
+        <!-- PUDIM -->
 
-                        <span class="avaliacao">
-                            ★ 4.9
-                        </span>
+        <article class="card" data-name="pudim">
 
-                    </div>
+            <div class="card-image">
 
+                🍮
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 90 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Pudim de Leite</h3>
+
+                <p>
+                    Uma sobremesa clássica
+                    que nunca sai de moda.
+                </p>
+
+                <div class="rating">
+                    ★ 4.9
                 </div>
 
-            </article>
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Pudim de Leite')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
 
 
-            <!-- BOLO -->
+        <!-- PANQUECA -->
 
-            <article class="card">
+        <article class="card" data-name="panqueca carne">
 
-                <div class="card-imagem">
+            <div class="card-image">
 
-                    <img
-                        src="images/bolo-chocolate.jpg"
-                        alt="Bolo de chocolate"
-                        loading="lazy"
-                    >
+                🥞
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Bolo de Chocolate"
-                    >
-                        ♡
-                    </button>
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
 
+                <span class="time">
+                    ⏱ 25 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Panqueca de Carne</h3>
+
+                <p>
+                    Fácil de fazer e perfeita
+                    para o almoço.
+                </p>
+
+                <div class="rating">
+                    ★ 4.8
                 </div>
 
-                <div class="card-conteudo">
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Panqueca de Carne')"
+                >
+                    Ver receita →
+                </a>
 
-                    <h2>Bolo de Chocolate</h2>
+            </div>
 
-                    <p>
-                        Fofinho, molhadinho e com
-                        cobertura irresistível.
-                    </p>
+        </article>
 
-                    <div class="card-info">
 
-                        <span>⏱ 50 min</span>
+        <!-- BRIGADEIRO -->
 
-                        <span class="avaliacao">
-                            ★ 4.8
-                        </span>
+        <article class="card" data-name="brigadeiro">
 
-                    </div>
+            <div class="card-image">
 
+                🍫
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 15 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Brigadeiro Gourmet</h3>
+
+                <p>
+                    Cremoso, fácil e perfeito
+                    para matar a vontade de doce.
+                </p>
+
+                <div class="rating">
+                    ★ 4.9
                 </div>
 
-            </article>
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Brigadeiro Gourmet')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
 
 
-            <!-- STROGONOFF -->
+        <!-- SALADA -->
 
-            <article class="card">
+        <article class="card" data-name="salada">
 
-                <div class="card-imagem">
+            <div class="card-image">
 
-                    <img
-                        src="images/strogonoff.jpg"
-                        alt="Strogonoff de frango"
-                        loading="lazy"
-                    >
+                🥗
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Strogonoff"
-                    >
-                        ♡
-                    </button>
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
 
+                <span class="time">
+                    ⏱ 20 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Salada Tropical</h3>
+
+                <p>
+                    Leve, colorida e refrescante
+                    para qualquer dia.
+                </p>
+
+                <div class="rating">
+                    ★ 4.6
                 </div>
 
-                <div class="card-conteudo">
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Salada Tropical')"
+                >
+                    Ver receita →
+                </a>
 
-                    <h2>Strogonoff de Frango</h2>
+            </div>
 
-                    <p>
-                        Cremoso e rápido, combina
-                        com qualquer ocasião.
-                    </p>
+        </article>
 
-                    <div class="card-info">
 
-                        <span>⏱ 30 min</span>
+        <!-- RISOTO -->
 
-                        <span class="avaliacao">
-                            ★ 4.7
-                        </span>
+        <article class="card" data-name="risoto">
 
-                    </div>
+            <div class="card-image">
 
+                🍚
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 35 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Risoto Cremoso</h3>
+
+                <p>
+                    Cremoso, saboroso e perfeito
+                    para um jantar especial.
+                </p>
+
+                <div class="rating">
+                    ★ 4.7
                 </div>
 
-            </article>
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Risoto Cremoso')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
 
 
-            <!-- PUDIM -->
+<!-- ================= DESTAQUE ================= -->
 
-            <article class="card">
+<div class="highlight" id="sobre">
 
-                <div class="card-imagem">
+    <small style="color:#f47b20;font-weight:bold;">
+        XE PA GOURMET
+    </small>
 
-                    <img
-                        src="images/pudim.jpg"
-                        alt="Pudim de leite"
-                        loading="lazy"
-                    >
+    <h2>
+        Cozinhar pode ser simples,
+        divertido e muito gostoso.
+    </h2>
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Pudim"
-                    >
-                        ♡
-                    </button>
+    <p>
+        O Xepa Gourmet foi criado para reunir receitas
+        fáceis, práticas e deliciosas. Aqui você encontra
+        ideias para o almoço, jantar, sobremesa e muito mais.
+    </p>
 
-                </div>
-
-                <div class="card-conteudo">
-
-                    <h2>Pudim de Leite</h2>
-
-                    <p>
-                        Sobremesa clássica que
-                        nunca sai de moda.
-                    </p>
-
-                    <div class="card-info">
-
-                        <span>⏱ 90 min</span>
-
-                        <span class="avaliacao">
-                            ★ 4.9
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
+</div>
 
 
-    <!-- =====================================
-         NEWSLETTER
-    ====================================== -->
+<!-- ================= NEWSLETTER ================= -->
 
-    <section class="newsletter">
+<div class="newsletter">
+
+    <div>
+
+        <h2>
+            Receitas novas toda semana!
+        </h2>
+
+        <p>
+            Receba novas ideias diretamente no seu e-mail.
+        </p>
+
+    </div>
+
+    <form onsubmit="cadastrar(event)">
+
+        <input
+            type="email"
+            placeholder="Seu melhor e-mail"
+            required
+        >
+
+        <button>
+            CADASTRAR
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
 
         <div>
 
-            <h2>
-                Receitas novas
-                <br>
-                toda semana!
-            </h2>
+            <div class="footer-logo">
+                👨‍🍳 Xepa
+                <span>Gourmet</span>
+            </div>
 
             <p>
-                Cadastre-se e receba receitas
-                exclusivas no seu e-mail.
+                Receitas simples, saborosas e
+                para qualquer ocasião.
             </p>
 
         </div>
 
 
-        <form
-            class="newsletter-form"
-            onsubmit="event.preventDefault(); alert('Cadastro realizado com sucesso!');"
-        >
+        <div>
 
-            <input
-                type="email"
-                placeholder="Seu melhor e-mail"
-                required
-                aria-label="Seu e-mail"
-            >
+            <h3>NAVEGAÇÃO</h3>
 
-            <button type="submit">
-                CADASTRAR
-            </button>
+            <a href="#inicio">Início</a>
+            <a href="#receitas">Receitas</a>
+            <a href="#categorias">Categorias</a>
 
-        </form>
-
-    </section>
+        </div>
 
 
-    <!-- =====================================
-         ÚLTIMAS RECEITAS
-    ====================================== -->
+        <div>
 
-    <section class="receitas">
+            <h3>CATEGORIAS</h3>
 
-        <div class="receitas-topo">
+            <a href="#receitas">Almoço</a>
+            <a href="#receitas">Jantar</a>
+            <a href="#receitas">Sobremesas</a>
+            <a href="#receitas">Lanches</a>
 
-            <div>
+        </div>
 
-                <span style="
-                    color:#f47b20;
-                    font-size:12px;
-                    font-weight:700;
-                ">
-                    ÚLTIMAS RECEITAS
-                </span>
 
-                <h2>Confira as novidades</h2>
+        <div>
 
-            </div>
+            <h3>CONTATO</h3>
 
-            <a href="receitas.html">
-                VER TODAS →
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                TikTok
+            </a>
+
+            <a href="#">
+                YouTube
             </a>
 
         </div>
 
-
-        <div class="receitas-grid">
-
-
-            <!-- PANQUECA -->
-
-            <article class="card">
-
-                <div class="card-imagem">
-
-                    <img
-                        src="images/panqueca.jpg"
-                        alt="Panqueca de carne moída"
-                        loading="lazy"
-                    >
-
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Panqueca"
-                    >
-                        ♡
-                    </button>
-
-                </div>
-
-                <div class="card-conteudo">
-
-                    <h2>Panqueca de Carne Moída</h2>
-
-                    <div class="card-info">
-                        <span>⏱ 25 min</span>
-
-                        <span class="avaliacao">
-                            ★ 4.8
-                        </span>
-                    </div>
-
-                </div>
-
-            </article>
+    </div>
 
 
-            <!-- TORTA -->
+    <div class="copyright">
 
-            <article class="card">
+        © 2026 Xepa Gourmet —
+        Todos os direitos reservados.
 
-                <div class="card-imagem">
+    </div>
 
-                    <img
-                        src="images/torta-frango.jpg"
-                        alt="Torta de frango cremosa"
-                        loading="lazy"
-                    >
-
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Torta"
-                    >
-                        ♡
-                    </button>
-
-                </div>
-
-                <div class="card-conteudo">
-
-                    <h2>Torta de Frango Cremosa</h2>
-
-                    <div class="card-info">
-                        <span>⏱ 40 min</span>
-
-                        <span class="avaliacao">
-                            ★ 4.7
-                        </span>
-                    </div>
-
-                </div>
-
-            </article>
+</footer>
 
 
-            <!-- SALADA -->
+<script>
 
-            <article class="card">
+/* ================= PESQUISA ================= */
 
-                <div class="card-imagem">
+function pesquisar(){
 
-                    <img
-                        src="images/salada.jpg"
-                        alt="Salada tropical"
-                        loading="lazy"
-                    >
+    const texto =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Salada"
-                    >
-                        ♡
-                    </button>
+    const cards =
+        document.querySelectorAll(".card");
 
-                </div>
+    cards.forEach(card => {
 
-                <div class="card-conteudo">
+        const nome =
+            card.dataset.name;
 
-                    <h2>Salada Tropical</h2>
+        if(nome.includes(texto)){
 
-                    <div class="card-info">
-                        <span>⏱ 20 min</span>
+            card.style.display="block";
 
-                        <span class="avaliacao">
-                            ★ 4.5
-                        </span>
-                    </div>
+        }else{
 
-                </div>
+            card.style.display="none";
 
-            </article>
+        }
+
+    });
+
+}
 
 
-            <!-- BRIGADEIRO -->
+/* Pesquisa apertando ENTER */
 
-            <article class="card">
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(event){
 
-                <div class="card-imagem">
+    if(event.key==="Enter"){
 
-                    <img
-                        src="images/brigadeiro.jpg"
-                        alt="Brigadeiro gourmet"
-                        loading="lazy"
-                    >
+        pesquisar();
 
-                    <button
-                        class="favorito"
-                        aria-label="Favoritar Brigadeiro"
-                    >
-                        ♡
-                    </button>
+    }
 
-                </div>
-
-                <div class="card-conteudo">
-
-                    <h2>Brigadeiro Gourmet</h2>
-
-                    <div class="card-info">
-                        <span>⏱ 15 min</span>
-
-                        <span class="avaliacao">
-                            ★ 4.9
-                        </span>
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
+});
 
 
-    <!-- =====================================
-         FOOTER
-    ====================================== -->
+/* ================= FAVORITOS ================= */
 
-    <footer>
+function favoritar(botao){
 
-        <div class="footer-container">
+    botao.classList.toggle("active");
+
+    if(botao.classList.contains("active")){
+
+        botao.innerHTML="♥";
+
+    }else{
+
+        botao.innerHTML="♡";
+
+    }
+
+}
 
 
-            <!-- MARCA -->
+/* ================= RECEITA ================= */
 
-            <div>
+function verReceita(nome){
 
-                <div class="footer-logo">
-                    👨‍🍳 Xepa
-                    <span style="color:#f47b20;">
-                        Gourmet
-                    </span>
-                </div>
+    alert(
+        "🍴 "+nome+
+        "\n\nA página completa dessa receita pode ser adicionada aqui com ingredientes e modo de preparo."
+    );
+
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+function cadastrar(event){
+
+    event.preventDefault();
+
+    alert(
+        "🎉 Cadastro realizado com sucesso!\n\nObrigado por acompanhar o Xepa Gourmet!"
+    );
+
+    event.target.reset();
+
+}
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Xepa Gourmet | Receitas</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#faf9f7;
+    color:#222;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#111;
+    color:white;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#f47b20;
+    font-style:italic;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#f47b20;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:500px;
+    display:flex;
+    align-items:center;
+    padding:70px 8%;
+    color:white;
+
+    background:
+    radial-gradient(circle at 80% 20%,rgba(244,123,32,.35),transparent 30%),
+    linear-gradient(120deg,#111,#272727 60%,#171717);
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.hero small{
+    color:#f47b20;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,6vw,75px);
+    line-height:1.05;
+    margin:18px 0;
+}
+
+.hero p{
+    color:#ddd;
+    font-size:17px;
+    line-height:1.7;
+    max-width:560px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:28px;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+}
+
+.btn-orange{
+    background:#f47b20;
+    color:white;
+}
+
+.btn-orange:hover{
+    background:#d9630f;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+    max-width:850px;
+    margin:-30px auto 60px;
+    padding:0 20px;
+    position:relative;
+}
+
+.search{
+    background:white;
+    height:60px;
+    border-radius:35px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 12px 35px #0002;
+    overflow:hidden;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 25px;
+    font-size:15px;
+}
+
+.search button{
+    width:65px;
+    height:100%;
+    border:0;
+    background:#f47b20;
+    color:white;
+    font-size:23px;
+    cursor:pointer;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title small{
+    color:#f47b20;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.section-title h2{
+    font-family:Georgia,serif;
+    font-size:35px;
+    margin-top:7px;
+}
+
+/* ================= CATEGORIAS ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:12px;
+    margin-bottom:80px;
+}
+
+.category{
+    text-decoration:none;
+    color:#222;
+    text-align:center;
+    padding:18px 5px;
+    border-radius:15px;
+    background:white;
+    border:1px solid #eee;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px #0001;
+    color:#f47b20;
+}
+
+.category-icon{
+    width:60px;
+    height:60px;
+    margin:auto auto 10px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#fff4ea;
+    font-size:27px;
+}
+
+.category span{
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ================= RECEITAS ================= */
+
+.recipes{
+    padding-bottom:80px;
+}
+
+.recipe-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:17px;
+    overflow:hidden;
+    border:1px solid #eee;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px #0001;
+}
+
+.card-image{
+    height:200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:80px;
+    background:
+    linear-gradient(135deg,#fff1e4,#ffe0c4);
+    position:relative;
+}
+
+.favorite{
+    position:absolute;
+    right:12px;
+    top:12px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:0;
+    background:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.favorite.active{
+    color:#f47b20;
+}
+
+.time{
+    position:absolute;
+    left:12px;
+    bottom:12px;
+    background:#111;
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.card-content{
+    padding:18px;
+}
+
+.card-content h3{
+    font-family:Georgia,serif;
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#777;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.rating{
+    color:#f47b20;
+    font-weight:bold;
+    margin-top:12px;
+    font-size:13px;
+}
+
+.card-link{
+    display:inline-block;
+    margin-top:12px;
+    color:#f47b20;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ================= DESTAQUE ================= */
+
+.highlight{
+    max-width:1160px;
+    margin:0 auto 80px;
+    padding:45px;
+    border-radius:20px;
+    color:white;
+
+    background:
+    radial-gradient(circle at 90% 20%,#f47b2055,transparent 30%),
+    linear-gradient(120deg,#111,#292929);
+}
+
+.highlight h2{
+    font-family:Georgia,serif;
+    font-size:38px;
+    max-width:500px;
+}
+
+.highlight p{
+    color:#ccc;
+    max-width:550px;
+    margin-top:12px;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    background:#f47b20;
+    color:white;
+    max-width:none;
+    padding:55px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.newsletter h2{
+    font-family:Georgia,serif;
+    font-size:34px;
+}
+
+.newsletter p{
+    margin-top:8px;
+}
+
+.newsletter form{
+    display:flex;
+}
+
+.newsletter input{
+    width:270px;
+    height:48px;
+    border:0;
+    padding:0 15px;
+    outline:0;
+    border-radius:25px 0 0 25px;
+}
+
+.newsletter button{
+    height:48px;
+    border:0;
+    padding:0 20px;
+    background:#111;
+    color:white;
+    font-weight:bold;
+    border-radius:0 25px 25px 0;
+    cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111;
+    color:white;
+    padding:50px 8% 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.footer-logo{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.footer-logo span{
+    color:#f47b20;
+}
+
+footer h3{
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+footer a{
+    color:#999;
+    text-decoration:none;
+    display:block;
+    margin:8px 0;
+    font-size:13px;
+}
+
+footer a:hover{
+    color:#f47b20;
+}
+
+footer p{
+    color:#999;
+    font-size:13px;
+    margin-top:12px;
+    max-width:300px;
+}
+
+.copyright{
+    border-top:1px solid #333;
+    text-align:center;
+    color:#666;
+    margin-top:40px;
+    padding-top:20px;
+    font-size:11px;
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:1000px){
+
+    .categories{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .recipe-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        padding:60px 25px;
+    }
+
+    .hero h1{
+        font-size:46px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .recipe-grid{
+        grid-template-columns:1fr;
+    }
+
+    .newsletter{
+        display:block;
+        padding:45px 25px;
+    }
+
+    .newsletter form{
+        margin-top:25px;
+    }
+
+    .newsletter input{
+        width:100%;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        👨‍🍳 Xepa <span>Gourmet</span>
+    </div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#receitas">Receitas</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <small>BEM-VINDO AO XEPA GOURMET</small>
+
+        <h1>
+            Receitas simples
+            para momentos
+            especiais.
+        </h1>
+
+        <p>
+            Descubra receitas práticas, econômicas e deliciosas
+            para deixar qualquer refeição muito mais especial.
+        </p>
+
+        <a href="#receitas" class="btn btn-orange">
+            Ver receitas →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PESQUISA ================= -->
+
+<div class="search-area">
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎  O que você quer cozinhar hoje?"
+        >
+
+        <button onclick="pesquisar()">⌕</button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CATEGORIAS ================= -->
+
+<section id="categorias">
+
+    <div class="section-title">
+
+        <small>EXPLORE</small>
+
+        <h2>Categorias</h2>
+
+    </div>
+
+    <div class="categories">
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍽️</div>
+            <span>Todas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍛</div>
+            <span>Almoço</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🌙</div>
+            <span>Jantar</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍰</div>
+            <span>Sobremesas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🍔</div>
+            <span>Lanches</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">☕</div>
+            <span>Café</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🥤</div>
+            <span>Bebidas</span>
+        </a>
+
+        <a class="category" href="#receitas">
+            <div class="category-icon">🌱</div>
+            <span>Saudáveis</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RECEITAS ================= -->
+
+<section class="recipes" id="receitas">
+
+    <div class="section-title">
+
+        <small>EM DESTAQUE</small>
+
+        <h2>Receitas mais acessadas</h2>
+
+    </div>
+
+
+    <div class="recipe-grid" id="recipeGrid">
+
+
+        <!-- LASANHA -->
+
+        <article class="card" data-name="lasanha">
+
+            <div class="card-image">
+
+                🍝
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 60 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Lasanha à Bolonhesa</h3>
 
                 <p>
-                    Receitas simples, saborosas e
-                    fáceis de preparar para qualquer ocasião.
+                    Clássica, cremosa e perfeita
+                    para toda a família.
                 </p>
 
-                <p style="margin-top:20px;">
-                    📷 Instagram &nbsp;
-                    ▶️ YouTube &nbsp;
-                    ♪ TikTok
+                <div class="rating">
+                    ★ 4.9
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Lasanha à Bolonhesa')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- BOLO -->
+
+        <article class="card" data-name="bolo chocolate">
+
+            <div class="card-image">
+
+                🍫
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 50 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Bolo de Chocolate</h3>
+
+                <p>
+                    Fofinho, molhadinho e com
+                    cobertura irresistível.
                 </p>
 
-            </div>
+                <div class="rating">
+                    ★ 4.8
+                </div>
 
-
-            <!-- NAVEGAÇÃO -->
-
-            <div class="footer-column">
-
-                <h3>NAVEGAÇÃO</h3>
-
-                <a href="index.html">Início</a>
-                <a href="receitas.html">Receitas</a>
-                <a href="#categorias">Categorias</a>
-                <a href="sobre.html">Sobre</a>
-                <a href="contato.html">Contato</a>
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Bolo de Chocolate')"
+                >
+                    Ver receita →
+                </a>
 
             </div>
 
+        </article>
 
-            <!-- CATEGORIAS -->
 
-            <div class="footer-column">
+        <!-- STROGONOFF -->
 
-                <h3>CATEGORIAS</h3>
+        <article class="card" data-name="strogonoff frango">
 
-                <a href="receitas.html">Almoço</a>
-                <a href="receitas.html">Jantar</a>
-                <a href="receitas.html">Sobremesas</a>
-                <a href="receitas.html">Lanches</a>
-                <a href="receitas.html">Bebidas</a>
+            <div class="card-image">
+
+                🍗
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 30 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Strogonoff de Frango</h3>
+
+                <p>
+                    Cremoso, rápido e perfeito
+                    para qualquer ocasião.
+                </p>
+
+                <div class="rating">
+                    ★ 4.7
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Strogonoff de Frango')"
+                >
+                    Ver receita →
+                </a>
 
             </div>
 
+        </article>
 
-            <!-- AJUDA -->
 
-            <div class="footer-column">
+        <!-- PUDIM -->
 
-                <h3>AJUDA</h3>
+        <article class="card" data-name="pudim">
 
-                <a href="#">Perguntas Frequentes</a>
-                <a href="#">Política de Privacidade</a>
-                <a href="#">Termos de Uso</a>
-                <a href="contato.html">Envie sua Receita</a>
+            <div class="card-image">
+
+                🍮
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 90 min
+                </span>
 
             </div>
+
+            <div class="card-content">
+
+                <h3>Pudim de Leite</h3>
+
+                <p>
+                    Uma sobremesa clássica
+                    que nunca sai de moda.
+                </p>
+
+                <div class="rating">
+                    ★ 4.9
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Pudim de Leite')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- PANQUECA -->
+
+        <article class="card" data-name="panqueca carne">
+
+            <div class="card-image">
+
+                🥞
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 25 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Panqueca de Carne</h3>
+
+                <p>
+                    Fácil de fazer e perfeita
+                    para o almoço.
+                </p>
+
+                <div class="rating">
+                    ★ 4.8
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Panqueca de Carne')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- BRIGADEIRO -->
+
+        <article class="card" data-name="brigadeiro">
+
+            <div class="card-image">
+
+                🍫
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 15 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Brigadeiro Gourmet</h3>
+
+                <p>
+                    Cremoso, fácil e perfeito
+                    para matar a vontade de doce.
+                </p>
+
+                <div class="rating">
+                    ★ 4.9
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Brigadeiro Gourmet')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- SALADA -->
+
+        <article class="card" data-name="salada">
+
+            <div class="card-image">
+
+                🥗
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 20 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Salada Tropical</h3>
+
+                <p>
+                    Leve, colorida e refrescante
+                    para qualquer dia.
+                </p>
+
+                <div class="rating">
+                    ★ 4.6
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Salada Tropical')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- RISOTO -->
+
+        <article class="card" data-name="risoto">
+
+            <div class="card-image">
+
+                🍚
+
+                <button
+                    class="favorite"
+                    onclick="favoritar(this)"
+                >
+                    ♡
+                </button>
+
+                <span class="time">
+                    ⏱ 35 min
+                </span>
+
+            </div>
+
+            <div class="card-content">
+
+                <h3>Risoto Cremoso</h3>
+
+                <p>
+                    Cremoso, saboroso e perfeito
+                    para um jantar especial.
+                </p>
+
+                <div class="rating">
+                    ★ 4.7
+                </div>
+
+                <a
+                    href="#"
+                    class="card-link"
+                    onclick="verReceita('Risoto Cremoso')"
+                >
+                    Ver receita →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DESTAQUE ================= -->
+
+<div class="highlight" id="sobre">
+
+    <small style="color:#f47b20;font-weight:bold;">
+        XE PA GOURMET
+    </small>
+
+    <h2>
+        Cozinhar pode ser simples,
+        divertido e muito gostoso.
+    </h2>
+
+    <p>
+        O Xepa Gourmet foi criado para reunir receitas
+        fáceis, práticas e deliciosas. Aqui você encontra
+        ideias para o almoço, jantar, sobremesa e muito mais.
+    </p>
+
+</div>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<div class="newsletter">
+
+    <div>
+
+        <h2>
+            Receitas novas toda semana!
+        </h2>
+
+        <p>
+            Receba novas ideias diretamente no seu e-mail.
+        </p>
+
+    </div>
+
+    <form onsubmit="cadastrar(event)">
+
+        <input
+            type="email"
+            placeholder="Seu melhor e-mail"
+            required
+        >
+
+        <button>
+            CADASTRAR
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="footer-logo">
+                👨‍🍳 Xepa
+                <span>Gourmet</span>
+            </div>
+
+            <p>
+                Receitas simples, saborosas e
+                para qualquer ocasião.
+            </p>
 
         </div>
 
 
-        <div class="footer-bottom">
+        <div>
 
-            © 2026 Xepa Gourmet -
-            Todos os direitos reservados.
+            <h3>NAVEGAÇÃO</h3>
+
+            <a href="#inicio">Início</a>
+            <a href="#receitas">Receitas</a>
+            <a href="#categorias">Categorias</a>
 
         </div>
 
-    </footer>
+
+        <div>
+
+            <h3>CATEGORIAS</h3>
+
+            <a href="#receitas">Almoço</a>
+            <a href="#receitas">Jantar</a>
+            <a href="#receitas">Sobremesas</a>
+            <a href="#receitas">Lanches</a>
+
+        </div>
 
 
-    <!-- JAVASCRIPT -->
+        <div>
 
-    <script src="script.js"></script>
+            <h3>CONTATO</h3>
+
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                TikTok
+            </a>
+
+            <a href="#">
+                YouTube
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 Xepa Gourmet —
+        Todos os direitos reservados.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ================= PESQUISA ================= */
+
+function pesquisar(){
+
+    const texto =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        const nome =
+            card.dataset.name;
+
+        if(nome.includes(texto)){
+
+            card.style.display="block";
+
+        }else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+}
+
+
+/* Pesquisa apertando ENTER */
+
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(event){
+
+    if(event.key==="Enter"){
+
+        pesquisar();
+
+    }
+
+});
+
+
+/* ================= FAVORITOS ================= */
+
+function favoritar(botao){
+
+    botao.classList.toggle("active");
+
+    if(botao.classList.contains("active")){
+
+        botao.innerHTML="♥";
+
+    }else{
+
+        botao.innerHTML="♡";
+
+    }
+
+}
+
+
+/* ================= RECEITA ================= */
+
+function verReceita(nome){
+
+    alert(
+        "🍴 "+nome+
+        "\n\nA página completa dessa receita pode ser adicionada aqui com ingredientes e modo de preparo."
+    );
+
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+function cadastrar(event){
+
+    event.preventDefault();
+
+    alert(
+        "🎉 Cadastro realizado com sucesso!\n\nObrigado por acompanhar o Xepa Gourmet!"
+    );
+
+    event.target.reset();
+
+}
+
+</script>
 
 </body>
 </html>
-
-
-xepa-gourmet/
-├── index.html
-├── receitas.html
-├── receita.html
-├── sobre.html
-├── contato.html
-├── style.css
-├── script.js
-├── README.md
-│
-└── images/
-    ├── hero.jpg
-    ├── newsletter.jpg
-    ├── lasanha.jpg
-    ├── bolo-chocolate.jpg
-    ├── strogonoff.jpg
-    ├── pudim.jpg
-    ├── panqueca.jpg
-    ├── torta-frango.jpg
-    ├── salada.jpg
-    ├── brigadeiro.jpg
-    └── risoto.jpg
