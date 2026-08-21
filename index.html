@@ -35,14 +35,13 @@ body{
     font-family:"DM Sans",sans-serif;
 }
 
+button,input{
+    font-family:inherit;
+}
+
 a{
     color:inherit;
     text-decoration:none;
-}
-
-button,
-input{
-    font-family:inherit;
 }
 
 /* ================= HEADER ================= */
@@ -104,7 +103,7 @@ nav a:hover{
 
 .hero{
     max-width:1180px;
-    margin:0 auto;
+    margin:auto;
     padding:72px 24px 75px;
     display:grid;
     grid-template-columns:1.05fr .95fr;
@@ -135,7 +134,6 @@ nav a:hover{
     font-size:clamp(48px,6vw,76px);
     line-height:1.02;
     letter-spacing:-2px;
-    max-width:680px;
 }
 
 .hero h1 em{
@@ -164,6 +162,8 @@ nav a:hover{
     border-radius:30px;
     font-size:14px;
     font-weight:700;
+    border:0;
+    cursor:pointer;
     transition:.2s;
 }
 
@@ -176,6 +176,9 @@ nav a:hover{
     font-size:14px;
     font-weight:600;
     padding:15px;
+    background:none;
+    border:0;
+    cursor:pointer;
 }
 
 /* HERO VISUAL */
@@ -197,7 +200,6 @@ nav a:hover{
     display:flex;
     justify-content:center;
     align-items:center;
-    position:relative;
 }
 
 .plate-inner{
@@ -463,6 +465,27 @@ nav a:hover{
     color:var(--orange);
 }
 
+/* BOTÃO DA RECEITA */
+
+.recipe-button{
+    width:100%;
+    margin-top:16px;
+    padding:11px;
+    border:1px solid var(--line);
+    background:var(--cream);
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    font-size:12px;
+    transition:.2s;
+}
+
+.recipe-button:hover{
+    background:var(--orange);
+    color:white;
+    border-color:var(--orange);
+}
+
 /* ================= FEATURE ================= */
 
 .feature{
@@ -474,7 +497,6 @@ nav a:hover{
     grid-template-columns:1fr 1fr;
     align-items:center;
     gap:50px;
-    overflow:hidden;
 }
 
 .feature-label{
@@ -601,6 +623,157 @@ nav a:hover{
     font-weight:700;
 }
 
+/* ================= PÁGINA DA RECEITA ================= */
+
+.recipe-page{
+    display:none;
+    max-width:1000px;
+    margin:auto;
+    padding:55px 24px 100px;
+}
+
+.recipe-page.active{
+    display:block;
+}
+
+.back-button{
+    border:0;
+    background:none;
+    color:#6e6862;
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.back-button:hover{
+    color:var(--orange);
+}
+
+.recipe-header{
+    display:grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap:55px;
+    align-items:center;
+}
+
+.recipe-big-image{
+    height:430px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#ead5bf,#d28a58);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:150px;
+    box-shadow:0 25px 60px rgba(45,30,18,.12);
+}
+
+.recipe-page-category{
+    color:var(--orange);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.recipe-page h1{
+    font-family:"Playfair Display",serif;
+    font-size:55px;
+    line-height:1.05;
+    margin:12px 0 18px;
+}
+
+.recipe-description{
+    color:var(--gray);
+    line-height:1.8;
+    font-size:15px;
+}
+
+.recipe-stats{
+    display:flex;
+    gap:30px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+    margin-top:25px;
+}
+
+.recipe-stats div{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.recipe-stats strong{
+    font-size:14px;
+}
+
+.recipe-stats span{
+    color:#888;
+    font-size:11px;
+}
+
+.recipe-content{
+    margin-top:65px;
+    display:grid;
+    grid-template-columns: .7fr 1.3fr;
+    gap:70px;
+}
+
+.recipe-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.ingredients{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:25px;
+}
+
+.ingredients li{
+    list-style:none;
+    border-bottom:1px solid var(--line);
+    padding:12px 0;
+    color:#666;
+    font-size:13px;
+}
+
+.ingredients li:last-child{
+    border-bottom:0;
+}
+
+.steps{
+    counter-reset:steps;
+}
+
+.step{
+    display:flex;
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.step-number{
+    min-width:35px;
+    height:35px;
+    border-radius:50%;
+    background:var(--orange);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:13px;
+}
+
+.step p{
+    color:#666;
+    line-height:1.7;
+    font-size:14px;
+    padding-top:5px;
+}
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -716,7 +889,9 @@ footer a:hover{
     }
 
     .feature,
-    .about{
+    .about,
+    .recipe-header,
+    .recipe-content{
         grid-template-columns:1fr;
     }
 
@@ -732,17 +907,16 @@ footer a:hover{
     .footer-top{
         grid-template-columns:1fr 1fr;
     }
+
+    .recipe-content{
+        gap:40px;
+    }
 }
 
 @media(max-width:560px){
 
-    .hero{
-        padding-top:45px;
-    }
-
     .hero h1{
         font-size:46px;
-        letter-spacing:-1.5px;
     }
 
     .hero-visual{
@@ -758,11 +932,6 @@ footer a:hover{
         width:205px;
         height:205px;
         font-size:65px;
-    }
-
-    .floating-card{
-        left:5px;
-        bottom:0;
     }
 
     .recipe-grid{
@@ -800,111 +969,129 @@ footer a:hover{
     .footer-top{
         grid-template-columns:1fr;
     }
+
+    .recipe-page h1{
+        font-size:42px;
+    }
+
+    .recipe-big-image{
+        height:300px;
+        font-size:100px;
+    }
+
+    .recipe-stats{
+        gap:18px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="header-inner">
+<header id="siteHeader">
 
-        <a href="#" class="logo">
-            Xepa <span>Gourmet</span>
-        </a>
+<div class="header-inner">
 
-        <nav>
-            <a href="#receitas">Receitas</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#contato" class="nav-button">Enviar receita</a>
-        </nav>
+<a href="#" class="logo" onclick="showHome()">
+Xepa <span>Gourmet</span>
+</a>
 
-    </div>
+<nav>
+<a href="#receitas" onclick="showHome()">Receitas</a>
+<a href="#categorias" onclick="showHome()">Categorias</a>
+<a href="#sobre" onclick="showHome()">Sobre</a>
+<a href="#contato" onclick="showHome()" class="nav-button">
+Enviar receita
+</a>
+</nav>
+
+</div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HOME ================= -->
+
+<div id="homePage">
+
 
 <section class="hero">
 
-    <div>
+<div>
 
-        <div class="hero-label">
-            COZINHA REAL • SABOR DE VERDADE
-        </div>
+<div class="hero-label">
+COZINHA REAL • SABOR DE VERDADE
+</div>
 
-        <h1>
-            Comida boa não precisa ser <em>complicada.</em>
-        </h1>
+<h1>
+Comida boa não precisa ser <em>complicada.</em>
+</h1>
 
-        <p class="hero-text">
-            Receitas fáceis, gostosas e acessíveis para você
-            cozinhar sem complicação. Do almoço de domingo
-            àquela sobremesa que salva o dia.
-        </p>
+<p class="hero-text">
+Receitas fáceis, gostosas e acessíveis para você
+cozinhar sem complicação. Do almoço de domingo
+àquela sobremesa que salva o dia.
+</p>
 
-        <div class="hero-buttons">
+<div class="hero-buttons">
 
-            <a href="#receitas" class="main-btn">
-                Explorar receitas
-            </a>
+<a href="#receitas" class="main-btn">
+Explorar receitas
+</a>
 
-            <a href="#categorias" class="text-btn">
-                Ver categorias →
-            </a>
+<a href="#categorias" class="text-btn">
+Ver categorias →
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="hero-visual">
+<div class="hero-visual">
 
-        <div class="plate">
+<div class="plate">
 
-            <div class="plate-inner">
-                🍝
-            </div>
+<div class="plate-inner">
+🍝
+</div>
 
-        </div>
+</div>
 
-        <div class="floating-card">
+<div class="floating-card">
 
-            <small>RECEITA EM DESTAQUE</small>
+<small>RECEITA EM DESTAQUE</small>
 
-            <strong>Lasanha da Xepa</strong>
+<strong>Lasanha da Xepa</strong>
 
-            <div class="rating">
-                ★★★★★ &nbsp; 4.9
-            </div>
+<div class="rating">
+★★★★★ &nbsp; 4.9
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- SEARCH -->
-
 <div class="search-box">
 
-    <form class="search" id="searchForm">
+<form class="search" id="searchForm">
 
-        <span class="search-icon">⌕</span>
+<span class="search-icon">⌕</span>
 
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="Procure por uma receita..."
-        >
+<input
+id="searchInput"
+type="text"
+placeholder="Procure por uma receita..."
+>
 
-        <button type="submit">
-            Buscar
-        </button>
+<button type="submit">
+Buscar
+</button>
 
-    </form>
+</form>
 
 </div>
 
@@ -912,516 +1099,1378 @@ footer a:hover{
 <main class="container">
 
 
-<!-- CATEGORIAS -->
-
 <section class="section" id="categorias">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <div>
-            <div class="eyebrow">ESCOLHA SEU MOMENTO</div>
-            <h2>O que você quer comer?</h2>
-        </div>
+<div>
+<div class="eyebrow">ESCOLHA SEU MOMENTO</div>
+<h2>O que você quer comer?</h2>
+</div>
 
-    </div>
+</div>
 
 
-    <div class="categories">
+<div class="categories">
 
-        <button class="category active" onclick="filterRecipes('all',this)">
-            Todas
-        </button>
+<button class="category active" onclick="filterRecipes('all',this)">
+Todas
+</button>
 
-        <button class="category" onclick="filterRecipes('almoco',this)">
-            🍽 Almoço
-        </button>
+<button class="category" onclick="filterRecipes('almoco',this)">
+🍽 Almoço
+</button>
 
-        <button class="category" onclick="filterRecipes('jantar',this)">
-            🌙 Jantar
-        </button>
+<button class="category" onclick="filterRecipes('jantar',this)">
+🌙 Jantar
+</button>
 
-        <button class="category" onclick="filterRecipes('sobremesa',this)">
-            🍰 Sobremesas
-        </button>
+<button class="category" onclick="filterRecipes('sobremesa',this)">
+🍰 Sobremesas
+</button>
 
-        <button class="category" onclick="filterRecipes('lanche',this)">
-            🥪 Lanches
-        </button>
+<button class="category" onclick="filterRecipes('lanche',this)">
+🥪 Lanches
+</button>
 
-        <button class="category" onclick="filterRecipes('cafe',this)">
-            ☕ Café da manhã
-        </button>
+<button class="category" onclick="filterRecipes('cafe',this)">
+☕ Café da manhã
+</button>
 
-    </div>
+</div>
 
 </section>
 
-
-<!-- RECEITAS -->
 
 <section class="section" id="receitas">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <div>
-            <div class="eyebrow">MAIS QUERIDAS</div>
-            <h2>Receitas da semana</h2>
-        </div>
+<div>
+<div class="eyebrow">MAIS QUERIDAS</div>
+<h2>Receitas da semana</h2>
+</div>
 
-        <a href="#receitas" class="view-all">
-            VER TODAS →
-        </a>
+<a href="#receitas" class="view-all">
+VER TODAS →
+</a>
 
-    </div>
+</div>
 
 
-    <div class="recipe-grid" id="recipeGrid">
+<div class="recipe-grid" id="recipeGrid">
 
 
-        <article class="recipe" data-category="almoco" data-name="lasanha bolonhesa">
+<!-- LASANHA -->
 
-            <div class="recipe-image">
-                🍝
+<article class="recipe"
+data-category="almoco"
+data-name="lasanha bolonhesa">
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
+<div class="recipe-image">
+🍝
 
-            <div class="recipe-info">
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
 
-                <div class="recipe-category">
-                    Almoço
-                </div>
+</div>
 
-                <h3>Lasanha à Bolonhesa</h3>
+<div class="recipe-info">
 
-                <p>
-                    Camadas cremosas, molho bem temperado
-                    e muito queijo.
-                </p>
+<div class="recipe-category">
+Almoço
+</div>
 
-                <div class="recipe-meta">
-                    <span>⏱ 60 min</span>
-                    <span class="stars">★★★★★ 4.9</span>
-                </div>
+<h3>Lasanha à Bolonhesa</h3>
 
-            </div>
+<p>
+Camadas cremosas, molho bem temperado
+e muito queijo.
+</p>
 
-        </article>
+<div class="recipe-meta">
+<span>⏱ 60 min</span>
+<span class="stars">★★★★★ 4.9</span>
+</div>
 
+<button
+class="recipe-button"
+onclick="openRecipe('lasanha')">
+Ver receita
+</button>
 
-        <article class="recipe" data-category="sobremesa" data-name="bolo chocolate">
+</div>
 
-            <div class="recipe-image">
-                🍫
+</article>
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
 
-            <div class="recipe-info">
+<!-- BOLO -->
 
-                <div class="recipe-category">
-                    Sobremesa
-                </div>
+<article class="recipe"
+data-category="sobremesa"
+data-name="bolo chocolate">
 
-                <h3>Bolo de Chocolate</h3>
+<div class="recipe-image">
+🍫
 
-                <p>
-                    Fofinho por dentro, intenso no chocolate
-                    e perfeito com café.
-                </p>
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
 
-                <div class="recipe-meta">
-                    <span>⏱ 50 min</span>
-                    <span class="stars">★★★★★ 4.8</span>
-                </div>
+</div>
 
-            </div>
+<div class="recipe-info">
 
-        </article>
+<div class="recipe-category">
+Sobremesa
+</div>
 
+<h3>Bolo de Chocolate</h3>
 
-        <article class="recipe" data-category="jantar" data-name="strogonoff frango">
+<p>
+Fofinho por dentro, intenso no chocolate
+e perfeito com café.
+</p>
 
-            <div class="recipe-image">
-                🍗
+<div class="recipe-meta">
+<span>⏱ 50 min</span>
+<span class="stars">★★★★★ 4.8</span>
+</div>
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
+<button
+class="recipe-button"
+onclick="openRecipe('bolo')">
+Ver receita
+</button>
 
-            <div class="recipe-info">
+</div>
 
-                <div class="recipe-category">
-                    Jantar
-                </div>
+</article>
 
-                <h3>Strogonoff de Frango</h3>
 
-                <p>
-                    Cremoso, rápido e perfeito para
-                    acompanhar arroz e batata.
-                </p>
+<!-- STROGONOFF -->
 
-                <div class="recipe-meta">
-                    <span>⏱ 30 min</span>
-                    <span class="stars">★★★★★ 4.8</span>
-                </div>
+<article class="recipe"
+data-category="jantar"
+data-name="strogonoff frango">
 
-            </div>
+<div class="recipe-image">
+🍗
 
-        </article>
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
 
+</div>
 
-        <article class="recipe" data-category="sobremesa" data-name="pudim leite">
+<div class="recipe-info">
 
-            <div class="recipe-image">
-                🍮
+<div class="recipe-category">
+Jantar
+</div>
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
+<h3>Strogonoff de Frango</h3>
 
-            <div class="recipe-info">
+<p>
+Cremoso, rápido e perfeito para
+acompanhar arroz e batata.
+</p>
 
-                <div class="recipe-category">
-                    Sobremesa
-                </div>
+<div class="recipe-meta">
+<span>⏱ 30 min</span>
+<span class="stars">★★★★★ 4.8</span>
+</div>
 
-                <h3>Pudim de Leite</h3>
+<button
+class="recipe-button"
+onclick="openRecipe('strogonoff')">
+Ver receita
+</button>
 
-                <p>
-                    Cremoso, delicado e com aquela
-                    calda de caramelo irresistível.
-                </p>
+</div>
 
-                <div class="recipe-meta">
-                    <span>⏱ 90 min</span>
-                    <span class="stars">★★★★★ 4.9</span>
-                </div>
+</article>
 
-            </div>
 
-        </article>
+<!-- PUDIM -->
 
+<article class="recipe"
+data-category="sobremesa"
+data-name="pudim leite">
 
-        <article class="recipe" data-category="lanche" data-name="panqueca carne">
+<div class="recipe-image">
+🍮
 
-            <div class="recipe-image">
-                🥞
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
+</div>
 
-            <div class="recipe-info">
+<div class="recipe-info">
 
-                <div class="recipe-category">
-                    Lanche
-                </div>
+<div class="recipe-category">
+Sobremesa
+</div>
 
-                <h3>Panqueca de Carne</h3>
+<h3>Pudim de Leite</h3>
 
-                <p>
-                    Massa macia e recheio bem temperado
-                    para um almoço especial.
-                </p>
+<p>
+Cremoso, delicado e com aquela
+calda de caramelo irresistível.
+</p>
 
-                <div class="recipe-meta">
-                    <span>⏱ 25 min</span>
-                    <span class="stars">★★★★★ 4.7</span>
-                </div>
+<div class="recipe-meta">
+<span>⏱ 90 min</span>
+<span class="stars">★★★★★ 4.9</span>
+</div>
 
-            </div>
+<button
+class="recipe-button"
+onclick="openRecipe('pudim')">
+Ver receita
+</button>
 
-        </article>
+</div>
 
+</article>
 
-        <article class="recipe" data-category="cafe" data-name="pao queijo">
 
-            <div class="recipe-image">
-                🧀
+<!-- PANQUECA -->
 
-                <button class="heart" onclick="favorite(this)">
-                    ♡
-                </button>
-            </div>
+<article class="recipe"
+data-category="lanche"
+data-name="panqueca carne">
 
-            <div class="recipe-info">
+<div class="recipe-image">
+🥞
 
-                <div class="recipe-category">
-                    Café da manhã
-                </div>
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
 
-                <h3>Pão de Queijo</h3>
+</div>
 
-                <p>
-                    Crocante por fora, macio por dentro
-                    e impossível de resistir.
-                </p>
+<div class="recipe-info">
 
-                <div class="recipe-meta">
-                    <span>⏱ 30 min</span>
-                    <span class="stars">★★★★★ 4.9</span>
-                </div>
+<div class="recipe-category">
+Lanche
+</div>
 
-            </div>
+<h3>Panqueca de Carne</h3>
 
-        </article>
+<p>
+Massa macia e recheio bem temperado
+para um almoço especial.
+</p>
 
-    </div>
+<div class="recipe-meta">
+<span>⏱ 25 min</span>
+<span class="stars">★★★★★ 4.7</span>
+</div>
+
+<button
+class="recipe-button"
+onclick="openRecipe('panqueca')">
+Ver receita
+</button>
+
+</div>
+
+</article>
+
+
+<!-- PÃO DE QUEIJO -->
+
+<article class="recipe"
+data-category="cafe"
+data-name="pao queijo">
+
+<div class="recipe-image">
+🧀
+
+<button class="heart"
+onclick="favorite(event,this)">
+♡
+</button>
+
+</div>
+
+<div class="recipe-info">
+
+<div class="recipe-category">
+Café da manhã
+</div>
+
+<h3>Pão de Queijo</h3>
+
+<p>
+Crocante por fora, macio por dentro
+e impossível de resistir.
+</p>
+
+<div class="recipe-meta">
+<span>⏱ 30 min</span>
+<span class="stars">★★★★★ 4.9</span>
+</div>
+
+<button
+class="recipe-button"
+onclick="openRecipe('pao')">
+Ver receita
+</button>
+
+</div>
+
+</article>
+
+</div>
 
 </section>
 
-
-<!-- DESTAQUE -->
 
 <section class="section">
 
-    <div class="feature">
+<div class="feature">
 
-        <div>
+<div>
 
-            <div class="feature-label">
-                RECEITA DA CASA
-            </div>
+<div class="feature-label">
+RECEITA DA CASA
+</div>
 
-            <h2>
-                Aquele almoço que parece ter dado trabalho.
-            </h2>
+<h2>
+Aquele almoço que parece ter dado trabalho.
+</h2>
 
-            <p>
-                No Xepa Gourmet a gente gosta de receitas
-                que impressionam sem exigir horas na cozinha.
-                Escolha bons ingredientes, siga os passos
-                e deixe o sabor fazer o resto.
-            </p>
+<p>
+No Xepa Gourmet a gente gosta de receitas
+que impressionam sem exigir horas na cozinha.
+Escolha bons ingredientes, siga os passos
+e deixe o sabor fazer o resto.
+</p>
 
-            <br>
+<br>
 
-            <a href="#receitas" class="main-btn">
-                Ver receitas →
-            </a>
+<a href="#receitas" class="main-btn">
+Ver receitas →
+</a>
 
-        </div>
+</div>
 
-        <div class="feature-image">
-            👨‍🍳
-        </div>
+<div class="feature-image">
+👨‍🍳
+</div>
 
-    </div>
+</div>
 
 </section>
 
-
-<!-- SOBRE -->
 
 <section class="section" id="sobre">
 
-    <div class="about">
+<div class="about">
 
-        <div>
+<div>
 
-            <div class="eyebrow">
-                SOBRE O XEPA
-            </div>
+<div class="eyebrow">
+SOBRE O XE﻿PA
+</div>
 
-            <h2>
-                Gourmet não precisa ser complicado.
-            </h2>
+<h2>
+Gourmet não precisa ser complicado.
+</h2>
 
-            <p>
-                O Xepa Gourmet nasceu com uma ideia simples:
-                transformar ingredientes comuns em comida
-                que dá vontade de repetir.
-            </p>
+<p>
+O Xepa Gourmet nasceu com uma ideia simples:
+transformar ingredientes comuns em comida
+que dá vontade de repetir.
+</p>
 
-            <br>
+<br>
 
-            <p>
-                Aqui você encontra receitas para a vida real:
-                fáceis de entender, gostosas de fazer e sem
-                aquela lista interminável de ingredientes.
-            </p>
+<p>
+Aqui você encontra receitas para a vida real:
+fáceis de entender, gostosas de fazer e sem
+aquela lista interminável de ingredientes.
+</p>
 
-        </div>
+</div>
 
 
-        <div class="about-list">
+<div class="about-list">
 
-            <div class="about-item">
-                <b>Receitas fáceis</b>
-                <span>Passo a passo sem complicação.</span>
-            </div>
+<div class="about-item">
+<b>Receitas fáceis</b>
+<span>Passo a passo sem complicação.</span>
+</div>
 
-            <div class="about-item">
-                <b>Ingredientes acessíveis</b>
-                <span>Comida boa sem gastar uma fortuna.</span>
-            </div>
+<div class="about-item">
+<b>Ingredientes acessíveis</b>
+<span>Comida boa sem gastar uma fortuna.</span>
+</div>
 
-            <div class="about-item">
-                <b>Testadas na prática</b>
-                <span>Receitas pensadas para funcionar.</span>
-            </div>
+<div class="about-item">
+<b>Testadas na prática</b>
+<span>Receitas pensadas para funcionar.</span>
+</div>
 
-            <div class="about-item">
-                <b>Muito sabor</b>
-                <span>Porque praticidade não significa comida sem graça.</span>
-            </div>
+<div class="about-item">
+<b>Muito sabor</b>
+<span>Praticidade não significa comida sem graça.</span>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- NEWSLETTER -->
-
 <section class="section" id="contato">
 
-    <div class="newsletter">
+<div class="newsletter">
 
-        <div>
+<div>
 
-            <h2>
-                Uma receita nova<br>
-                direto na sua caixa.
-            </h2>
+<h2>
+Uma receita nova<br>
+direto na sua caixa.
+</h2>
 
-            <p>
-                Cadastre seu e-mail e acompanhe as novidades.
-            </p>
+<p>
+Cadastre seu e-mail e acompanhe as novidades.
+</p>
 
-        </div>
+</div>
 
 
-        <form class="newsletter-form" id="newsletter">
+<form class="newsletter-form"
+id="newsletter">
 
-            <input
-                type="email"
-                placeholder="Seu melhor e-mail"
-                required
-            >
+<input
+type="email"
+placeholder="Seu melhor e-mail"
+required
+>
 
-            <button>
-                Cadastrar
-            </button>
+<button>
+Cadastrar
+</button>
 
-        </form>
+</form>
 
-    </div>
+</div>
 
 </section>
 
 </main>
 
+</div>
 
-<!-- FOOTER -->
+
+<!-- ================= PÁGINAS DAS RECEITAS ================= -->
+
+
+<div id="recipePages">
+
+
+<!-- LASANHA -->
+
+<section class="recipe-page" id="page-lasanha">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🍝
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+ALMOÇO • RECEITA DA CASA
+</div>
+
+<h1>
+Lasanha à Bolonhesa
+</h1>
+
+<p class="recipe-description">
+Uma lasanha cremosa e cheia de sabor,
+com molho bolonhesa, queijo e camadas
+perfeitas para reunir a família.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 60 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 6 pessoas</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.9</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+
+<li>500 g de carne moída</li>
+<li>500 g de massa para lasanha</li>
+<li>2 xícaras de molho de tomate</li>
+<li>300 g de queijo mussarela</li>
+<li>200 g de presunto</li>
+<li>1 cebola picada</li>
+<li>2 dentes de alho</li>
+<li>Sal e pimenta a gosto</li>
+<li>1 colher de azeite</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Refogue a cebola e o alho no azeite.
+Adicione a carne moída e cozinhe até dourar.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Acrescente o molho de tomate, tempere
+com sal e pimenta e deixe cozinhar por
+aproximadamente 15 minutos.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Monte a lasanha alternando molho, massa,
+presunto e queijo até finalizar os ingredientes.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Cubra com queijo e leve ao forno preaquecido
+a 200°C por aproximadamente 30 minutos.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BOLO -->
+
+<section class="recipe-page" id="page-bolo">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🍫
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+SOBREMESA
+</div>
+
+<h1>
+Bolo de Chocolate
+</h1>
+
+<p class="recipe-description">
+Um bolo fofinho, chocolatudo e fácil de preparar.
+Perfeito para acompanhar um café da tarde.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 50 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 10 fatias</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.8</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+<li>2 xícaras de farinha</li>
+<li>1 xícara de açúcar</li>
+<li>1 xícara de chocolate em pó</li>
+<li>3 ovos</li>
+<li>1 xícara de leite</li>
+<li>1/2 xícara de óleo</li>
+<li>1 colher de fermento</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Misture os ovos, açúcar e óleo até obter
+uma mistura homogênea.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Adicione o leite, a farinha e o chocolate
+aos poucos, misturando bem.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Acrescente o fermento e misture delicadamente.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Coloque em uma forma untada e asse a
+180°C por aproximadamente 40 minutos.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STROGONOFF -->
+
+<section class="recipe-page" id="page-strogonoff">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🍗
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+JANTAR
+</div>
+
+<h1>
+Strogonoff de Frango
+</h1>
+
+<p class="recipe-description">
+Cremoso, rápido e delicioso. Uma das receitas
+mais fáceis para aquele jantar especial.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 30 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 4 pessoas</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.8</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+<li>500 g de peito de frango</li>
+<li>1 cebola</li>
+<li>2 dentes de alho</li>
+<li>2 colheres de ketchup</li>
+<li>1 colher de mostarda</li>
+<li>1 caixa de creme de leite</li>
+<li>Sal e pimenta a gosto</li>
+<li>1 colher de óleo</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Corte o frango em cubos pequenos e
+tempere com sal e pimenta.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Refogue a cebola e o alho. Acrescente
+o frango e deixe dourar.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Adicione ketchup e mostarda e misture bem.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Desligue o fogo, acrescente o creme de leite
+e misture até ficar cremoso.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PUDIM -->
+
+<section class="recipe-page" id="page-pudim">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🍮
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+SOBREMESA
+</div>
+
+<h1>
+Pudim de Leite
+</h1>
+
+<p class="recipe-description">
+Cremoso, delicado e com uma calda de caramelo
+que deixa tudo ainda melhor.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 90 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 8 pessoas</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.9</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+<li>1 lata de leite condensado</li>
+<li>2 medidas de leite</li>
+<li>3 ovos</li>
+<li>1 xícara de açúcar</li>
+<li>1/2 xícara de água</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Derreta o açúcar em uma panela até formar
+um caramelo dourado.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Espalhe o caramelo em uma forma de pudim.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Bata o leite condensado, leite e ovos no liquidificador.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Despeje na forma e asse em banho-maria
+por aproximadamente 1 hora.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PANQUECA -->
+
+<section class="recipe-page" id="page-panqueca">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🥞
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+LANCHES
+</div>
+
+<h1>
+Panqueca de Carne
+</h1>
+
+<p class="recipe-description">
+Massa leve e recheio de carne bem temperado
+para um prato simples e delicioso.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 25 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 5 pessoas</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.7</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+<li>1 xícara de farinha</li>
+<li>1 xícara de leite</li>
+<li>1 ovo</li>
+<li>300 g de carne moída</li>
+<li>1 cebola</li>
+<li>Molho de tomate</li>
+<li>Sal e temperos</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Bata farinha, leite e ovo até formar
+uma massa lisa.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Faça discos finos em uma frigideira
+antiaderente.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Prepare a carne moída com cebola e temperos.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Recheie as panquecas, cubra com molho
+e sirva.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PÃO DE QUEIJO -->
+
+<section class="recipe-page" id="page-pao">
+
+<button class="back-button"
+onclick="showHome()">
+← Voltar para receitas
+</button>
+
+<div class="recipe-header">
+
+<div class="recipe-big-image">
+🧀
+</div>
+
+<div>
+
+<div class="recipe-page-category">
+CAFÉ DA MANHÃ
+</div>
+
+<h1>
+Pão de Queijo
+</h1>
+
+<p class="recipe-description">
+Crocante por fora, macio por dentro e com
+aquele sabor de queijo que combina com café.
+</p>
+
+<div class="recipe-stats">
+
+<div>
+<strong>⏱ 30 min</strong>
+<span>Tempo</span>
+</div>
+
+<div>
+<strong>👥 15 unidades</strong>
+<span>Rendimento</span>
+</div>
+
+<div>
+<strong>★ 4.9</strong>
+<span>Avaliação</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="recipe-content">
+
+<div>
+
+<h2>Ingredientes</h2>
+
+<div class="ingredients">
+
+<ul>
+<li>2 xícaras de polvilho</li>
+<li>1 xícara de queijo ralado</li>
+<li>1/2 xícara de leite</li>
+<li>1/4 xícara de óleo</li>
+<li>1 ovo</li>
+<li>Sal a gosto</li>
+</ul>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Modo de preparo</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<p>
+Aqueça o leite com o óleo e misture
+ao polvilho.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<p>
+Quando amornar, acrescente o ovo e o queijo.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<p>
+Misture até formar uma massa que possa
+ser modelada.
+</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<p>
+Faça bolinhas e asse a 200°C por cerca
+de 20 minutos.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <div class="footer-inner">
+<div class="footer-inner">
 
-        <div class="footer-top">
+<div class="footer-top">
 
-            <div>
+<div>
 
-                <div class="footer-logo">
-                    Xepa <span>Gourmet</span>
-                </div>
+<div class="footer-logo">
+Xepa <span>Gourmet</span>
+</div>
 
-                <p class="footer-description">
-                    Receitas simples, ingredientes acessíveis
-                    e muito sabor para a sua cozinha.
-                </p>
+<p class="footer-description">
+Receitas simples, ingredientes acessíveis
+e muito sabor para a sua cozinha.
+</p>
 
-            </div>
+</div>
 
+<div>
 
-            <div>
+<h4>NAVEGAÇÃO</h4>
 
-                <h4>NAVEGAÇÃO</h4>
+<a href="#" onclick="showHome()">Início</a>
+<a href="#receitas" onclick="showHome()">Receitas</a>
+<a href="#categorias" onclick="showHome()">Categorias</a>
 
-                <a href="#">Início</a>
-                <a href="#receitas">Receitas</a>
-                <a href="#categorias">Categorias</a>
+</div>
 
-            </div>
+<div>
 
+<h4>XEPA GOURMET</h4>
 
-            <div>
+<a href="#sobre" onclick="showHome()">Sobre nós</a>
+<a href="#contato" onclick="showHome()">Contato</a>
 
-                <h4>XEPA GOURMET</h4>
+</div>
 
-                <a href="#sobre">Sobre nós</a>
-                <a href="#contato">Contato</a>
-                <a href="#contato">Enviar receita</a>
+<div>
 
-            </div>
+<h4>RECEITAS</h4>
 
+<a href="#" onclick="openRecipe('lasanha')">Lasanha</a>
+<a href="#" onclick="openRecipe('bolo')">Bolo de chocolate</a>
+<a href="#" onclick="openRecipe('strogonoff')">Strogonoff</a>
 
-            <div>
+</div>
 
-                <h4>CATEGORIAS</h4>
+</div>
 
-                <a href="#categorias">Almoço</a>
-                <a href="#categorias">Jantar</a>
-                <a href="#categorias">Sobremesas</a>
+<div class="footer-bottom">
+© 2026 Xepa Gourmet · Feito para quem ama cozinhar.
+</div>
 
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-            © 2026 Xepa Gourmet · Feito para quem ama cozinhar.
-        </div>
-
-    </div>
+</div>
 
 </footer>
 
 
-<div class="toast" id="toast">
-    Receita adicionada aos favoritos ❤️
-</div>
+<div class="toast" id="toast"></div>
 
 
 <script>
 
-/* FAVORITOS */
+/* ================= ABRIR RECEITA ================= */
 
-function favorite(button){
+function openRecipe(recipe){
+
+    document.getElementById("homePage").style.display="none";
+
+    document.querySelectorAll(".recipe-page")
+        .forEach(page=>{
+            page.classList.remove("active");
+        });
+
+    const page=
+        document.getElementById("page-"+recipe);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* ================= VOLTAR ================= */
+
+function showHome(){
+
+    document.getElementById("homePage").style.display="block";
+
+    document.querySelectorAll(".recipe-page")
+        .forEach(page=>{
+            page.classList.remove("active");
+        });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* ================= FAVORITOS ================= */
+
+function favorite(event,button){
+
+    event.stopPropagation();
 
     button.classList.toggle("liked");
 
     if(button.classList.contains("liked")){
 
         button.textContent="♥";
-        showToast("Receita adicionada aos favoritos ❤️");
+
+        showToast(
+            "Receita adicionada aos favoritos ❤️"
+        );
 
     }else{
 
         button.textContent="♡";
-        showToast("Receita removida dos favoritos");
+
+        showToast(
+            "Receita removida dos favoritos"
+        );
 
     }
+
 }
 
 
-/* FILTROS */
+/* ================= FILTROS ================= */
 
 function filterRecipes(category,button){
 
     document.querySelectorAll(".category")
-        .forEach(item=>item.classList.remove("active"));
+        .forEach(item=>{
+            item.classList.remove("active");
+        });
 
     button.classList.add("active");
 
@@ -1442,10 +2491,11 @@ function filterRecipes(category,button){
             }
 
         });
+
 }
 
 
-/* BUSCA */
+/* ================= BUSCA ================= */
 
 document.getElementById("searchForm")
 .addEventListener("submit",function(event){
@@ -1479,7 +2529,7 @@ document.getElementById("searchForm")
 });
 
 
-/* NEWSLETTER */
+/* ================= NEWSLETTER ================= */
 
 document.getElementById("newsletter")
 .addEventListener("submit",function(event){
@@ -1488,12 +2538,14 @@ document.getElementById("newsletter")
 
     this.reset();
 
-    showToast("Cadastro realizado com sucesso! ✨");
+    showToast(
+        "Cadastro realizado com sucesso! ✨"
+    );
 
 });
 
 
-/* TOAST */
+/* ================= TOAST ================= */
 
 function showToast(message){
 
